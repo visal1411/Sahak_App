@@ -1,0 +1,47 @@
+import type { Metadata } from 'next';
+import { NextIntlClientProvider } from 'next-intl';
+import { getLocale, getMessages } from 'next-intl/server';
+import '@/styles/globals.css';
+
+export const metadata: Metadata = {
+  title: {
+    default: 'SAHAK — Peer Learning & Mentorship for Cambodia',
+    template: '%s | SAHAK',
+  },
+  description:
+    'SAHAK connects Cambodian high school students with university student mentors for affordable, relatable academic support and career guidance.',
+  keywords: ['tutoring', 'mentorship', 'Cambodia', 'SAHAK', 'peer learning', 'university', 'scholarship'],
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    siteName: 'SAHAK',
+  },
+};
+
+export default async function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const locale = await getLocale();
+  const messages = await getMessages();
+
+  return (
+    <html lang={locale}>
+      <head>
+        {/* Inter font from Google Fonts — loaded via <link> to avoid build-time font issues */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body>
+        <NextIntlClientProvider messages={messages}>
+          {children}
+        </NextIntlClientProvider>
+      </body>
+    </html>
+  );
+}

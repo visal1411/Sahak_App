@@ -1,0 +1,17 @@
+// ─────────────────────────────────────────────────────────────
+// SAHAK — Prisma Schema
+// Full schema will be added incrementally starting in Phase 3.
+// ─────────────────────────────────────────────────────────────
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Tables will be added here phase by phase.
+// Phase 3 adds: users, refresh_tokens, password_reset_tokens
+// Phase 4 adds: student_profiles, mentor_profiles, subjects, etc.
