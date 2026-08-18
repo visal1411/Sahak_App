@@ -6,7 +6,10 @@ import { AuthFormShell } from '@/components/shared/AuthFormShell';
 import { TextField } from '@/components/shared/TextField';
 import { BadgeArrowButton } from '@/components/shared/BadgeArrowButton';
 
+import { useRouter } from 'next/navigation';
+
 export default function LoginPage() {
+  const router = useRouter();
   return (
     <AuthFormShell 
       title="Welcome back" 
@@ -14,7 +17,10 @@ export default function LoginPage() {
       illustrationSrc="https://illustrations.popsy.co/blue/freelancer.svg"
       illustrationAlt="Student accessing digital campus"
     >
-      <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+      <form className="space-y-6" onSubmit={(e) => {
+        e.preventDefault();
+        router.push('/dashboard');
+      }}>
         <TextField 
           id="identifier" 
           label="Phone number or email" 

@@ -85,6 +85,18 @@ const config: Config = {
         "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
         "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700" }],
         "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
+      },
+      keyframes: {
+        'soft-pulse': {
+          '0%, 100%': { transform: 'scale(1)', opacity: '1', boxShadow: '0 0 0 0 rgba(14, 165, 233, 0)' },
+          '50%': { transform: 'scale(1.02)', opacity: '0.9', boxShadow: '0 0 15px 2px rgba(14, 165, 233, 0.3)' },
+        }
+      },
+      animation: {
+        'soft-pulse': 'soft-pulse 2s ease-in-out infinite',
+      },
+      boxShadow: {
+        'brand-card': '0 4px 20px -2px rgba(14, 165, 233, 0.1)',
       }
     }
   },

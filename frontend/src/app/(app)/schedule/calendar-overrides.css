@@ -1,0 +1,83 @@
+/* SAHAK overrides for react-big-calendar */
+
+.custom-sahak-calendar .rbc-calendar {
+  font-family: inherit;
+}
+
+/* Remove borders to make it flat and clean */
+.custom-sahak-calendar .rbc-month-view,
+.custom-sahak-calendar .rbc-time-view,
+.custom-sahak-calendar .rbc-time-header,
+.custom-sahak-calendar .rbc-header {
+  border-color: rgba(203, 196, 210, 0.4) !important; /* outline-variant/40 */
+}
+
+.custom-sahak-calendar .rbc-day-bg + .rbc-day-bg,
+.custom-sahak-calendar .rbc-time-content > * + * > * {
+  border-left-color: rgba(203, 196, 210, 0.4) !important;
+}
+
+.custom-sahak-calendar .rbc-time-view {
+  border: none !important;
+}
+
+.custom-sahak-calendar .rbc-time-header.rbc-overflowing {
+  border-right: none;
+}
+
+/* Time column typography */
+.custom-sahak-calendar .rbc-time-gutter .rbc-timeslot-group {
+  border-bottom: none !important;
+  font-size: 10px;
+  font-weight: 500;
+  color: #494551; /* on-surface-variant */
+  text-align: center;
+  padding-top: 8px;
+}
+
+.custom-sahak-calendar .rbc-time-slot {
+  border-top: none;
+}
+
+/* Day header typography */
+.custom-sahak-calendar .rbc-header {
+  padding: 12px 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: #494551;
+  text-transform: uppercase;
+}
+
+.custom-sahak-calendar .rbc-today {
+  background-color: rgba(14, 165, 233, 0.05) !important; /* primary/5 */
+}
+
+/* Event container overrides (strip defaults so our custom component shines) */
+.custom-sahak-calendar .rbc-event {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+.custom-sahak-calendar .rbc-event:focus {
+  outline: none;
+}
+
+.custom-sahak-calendar .rbc-timeslot-group {
+  border-bottom-color: rgba(203, 196, 210, 0.2) !important;
+}
+
+/* Scrollbar styling for calendar */
+.custom-sahak-calendar .rbc-time-content::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-sahak-calendar .rbc-time-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-sahak-calendar .rbc-time-content::-webkit-scrollbar-thumb {
+  background: rgba(14, 165, 233, 0.2);
+  border-radius: 9999px;
+}
+.custom-sahak-calendar .rbc-time-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(14, 165, 233, 0.4);
+}

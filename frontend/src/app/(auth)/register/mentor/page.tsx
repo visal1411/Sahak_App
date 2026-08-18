@@ -11,14 +11,17 @@ export default function MentorRegisterPage() {
 
   return (
     <AuthFormShell 
-      title="Become a Mentor" 
-      subtitle="Join SAHAK and guide the next generation."
-      illustrationSrc="https://illustrations.popsy.co/blue/keynote-presentation.svg"
-      illustrationAlt="Mentor giving a presentation"
-      showBackButton={true}
+      title={step === 3 ? "Application Pending" : "Become a Mentor"} 
+      subtitle={step === 3 ? "We are reviewing your details." : "Join SAHAK and guide the next generation."}
+      illustrationSrc={step === 3 ? "https://illustrations.popsy.co/blue/surreal-hourglass.svg" : "https://illustrations.popsy.co/blue/keynote-presentation.svg"}
+      illustrationAlt={step === 3 ? "Timer or waiting illustration" : "Mentor giving a presentation"}
+      showBackButton={step !== 3}
       backButtonHref="/role-selection"
     >
-      <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
+      <form className="space-y-8" onSubmit={(e) => {
+        e.preventDefault();
+        if (step === 2) setStep(3);
+      }}>
         
         {step === 1 && (
           <div className="space-y-6 animate-fade-in">
@@ -175,16 +178,42 @@ export default function MentorRegisterPage() {
           </div>
         )}
 
-        {/* Step indicator */}
-        <div className="flex justify-center gap-2 mt-4">
-          <div className={`h-1.5 rounded-full transition-all duration-300 ${step === 1 ? 'w-6 bg-primary' : 'w-2 bg-primary/20 hover:bg-primary/40 cursor-pointer'}`} onClick={() => setStep(1)}></div>
-          <div className={`h-1.5 rounded-full transition-all duration-300 ${step === 2 ? 'w-6 bg-primary' : 'w-2 bg-primary/20 hover:bg-primary/40 cursor-pointer'}`} onClick={() => setStep(2)}></div>
-        </div>
+        {step === 3 && (
+          <div className="space-y-6 animate-fade-in text-center flex flex-col items-center py-8">
+            <div className="w-24 h-24 bg-primary/10 rounded-[2rem] flex items-center justify-center mb-2">
+              <span className="material-symbols-outlined text-primary text-5xl" style={{ fontVariationSettings: "'FILL' 0" }}>hourglass_top</span>
+            </div>
+            <h2 className="font-headline-lg text-headline-lg text-on-surface">
+              Application Submitted
+            </h2>
+            <p className="font-body-md text-body-md text-on-surface-variant">
+              Thank you for applying! Your mentor profile is currently pending admin approval. You will receive an email once your account has been verified.
+            </p>
+            <div className="pt-6 w-full flex justify-center">
+              <Link href="/login" className="w-full">
+                <BadgeArrowButton 
+                  label="Return to Login" 
+                  type="button" 
+                />
+              </Link>
+            </div>
+          </div>
+        )}
 
-        {/* Sign in link */}
-        <p className="text-center font-body-sm text-body-sm text-on-surface-variant pt-2 border-t border-surface-variant pb-4">
-          Already have an account? <Link href="/login" className="text-primary font-bold hover:underline transition-all">Log in</Link>
-        </p>
+        {/* Step indicator */}
+        {step !== 3 && (
+          <>
+            <div className="flex justify-center gap-2 mt-4">
+              <div className={`h-1.5 rounded-full transition-all duration-300 ${step === 1 ? 'w-6 bg-primary' : 'w-2 bg-primary/20 hover:bg-primary/40 cursor-pointer'}`} onClick={() => setStep(1)}></div>
+              <div className={`h-1.5 rounded-full transition-all duration-300 ${step === 2 ? 'w-6 bg-primary' : 'w-2 bg-primary/20 hover:bg-primary/40 cursor-pointer'}`} onClick={() => setStep(2)}></div>
+            </div>
+
+            {/* Sign in link */}
+            <p className="text-center font-body-sm text-body-sm text-on-surface-variant pt-2 border-t border-surface-variant pb-4">
+              Already have an account? <Link href="/login" className="text-primary font-bold hover:underline transition-all">Log in</Link>
+            </p>
+          </>
+        )}
       </form>
     </AuthFormShell>
   );
