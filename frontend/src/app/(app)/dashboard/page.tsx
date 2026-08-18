@@ -112,6 +112,69 @@ export default function MentorDashboard() {
           icon="check_circle" 
         />
 
+        {/* Recent Students Widget */}
+        <div className="col-span-1 md:col-span-2 lg:col-span-2 flex flex-col h-full bg-surface-container-lowest p-6 rounded-[24px] border border-outline-variant/30 shadow-brand-card hover:-translate-y-1 transition-transform duration-300 relative">
+          <div className="flex justify-between items-center mb-6">
+            <div className="flex items-center gap-2">
+              <div className="w-10 h-10 rounded-full bg-tertiary/10 flex items-center justify-center text-tertiary">
+                <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>groups</span>
+              </div>
+              <h2 className="font-headline-lg text-stat-display text-on-surface tracking-tight">
+                My Students
+              </h2>
+            </div>
+            <Link href="/students" className="font-body-sm text-body-sm text-tertiary hover:opacity-80 transition-colors font-medium flex items-center gap-1">
+              View All <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+            </Link>
+          </div>
+
+          <div className="flex flex-col gap-3 flex-1 overflow-y-auto">
+             {/* Student List Item */}
+             <div className="flex items-center justify-between p-3 rounded-xl border border-outline-variant/20 hover:bg-surface-variant/20 transition-colors cursor-pointer group">
+               <div className="flex items-center gap-3">
+                  <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCy169VFAeTZeAalIBAno4QtNY4Sh-zZDx2tl6Jcj6jgKkI-z0jiTnCUlLwRRdooFc7DRBLl1CKlLpqFaAckDXIQYguEV0aVu2gh6t4VB6i9Kdjn1YvaFULz8c1i3kpsiw4kuywZTfx3kxtHtxkePL5euO7CWMt4LVKlaD1llcTnpWttwGVUx6I_XFiMvYsc-FsC3T_htCzuDbnJXoDp2ZKJ8u8OhhThIEPn1oThFun8pw-TVPo1MhQ1A" alt="Sophea N." className="w-12 h-12 rounded-full object-cover" />
+                  <div>
+                    <h4 className="font-body-md font-semibold text-on-surface">Sophea N.</h4>
+                    <p className="font-body-sm text-outline text-[12px]">UX/UI Design • Next: Today, 2:00PM</p>
+                  </div>
+               </div>
+               <Link href="/messages" className="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-outline group-hover:bg-primary group-hover:text-on-primary transition-all">
+                 <span className="material-symbols-outlined text-[16px]">chat</span>
+               </Link>
+             </div>
+
+             {/* Student List Item */}
+             <div className="flex items-center justify-between p-3 rounded-xl border border-outline-variant/20 hover:bg-surface-variant/20 transition-colors cursor-pointer group">
+               <div className="flex items-center gap-3">
+                  <img src="https://i.pravatar.cc/150?u=panha" alt="Panha Lay" className="w-12 h-12 rounded-full object-cover" />
+                  <div>
+                    <h4 className="font-body-md font-semibold text-on-surface">Panha Lay</h4>
+                    <p className="font-body-sm text-outline text-[12px]">Physics • Next: Tomorrow</p>
+                  </div>
+               </div>
+               <Link href="/messages" className="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-outline group-hover:bg-primary group-hover:text-on-primary transition-all">
+                 <span className="material-symbols-outlined text-[16px]">chat</span>
+               </Link>
+             </div>
+
+             {/* Student List Item */}
+             <div className="flex items-center justify-between p-3 rounded-xl border border-outline-variant/20 hover:bg-surface-variant/20 transition-colors cursor-pointer group">
+               <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-full bg-secondary-container text-on-secondary-container font-headline-lg flex items-center justify-center">
+                    C
+                  </div>
+                  <div>
+                    <h4 className="font-body-md font-semibold text-on-surface">Chanda K.</h4>
+                    <p className="font-body-sm text-outline text-[12px]">Mathematics • 4 past sessions</p>
+                  </div>
+               </div>
+               <Link href="/messages" className="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-outline group-hover:bg-primary group-hover:text-on-primary transition-all">
+                 <span className="material-symbols-outlined text-[16px]">chat</span>
+               </Link>
+             </div>
+          </div>
+        </div>
+
         {/* Confirmed Setup Summary */}
         {isSetupComplete && (
           <div className="col-span-1 flex flex-col justify-between h-full bg-surface-container-lowest p-6 rounded-[24px] border border-outline-variant/30 shadow-brand-card hover:-translate-y-1 transition-transform duration-300 relative">

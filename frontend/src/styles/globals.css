@@ -20,6 +20,21 @@
   .brand-gradient-bg {
     background: linear-gradient(135deg, #e0f2fe 0%, #fdf7ff 50%, #bae6fd 100%);
   }
+
+  /* Custom scrollbar for webkit */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: theme('colors.surface-variant');
+    border-radius: theme('borderRadius.full');
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: theme('colors.outline-variant');
+  }
 }
 
 @layer base {

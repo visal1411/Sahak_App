@@ -12,6 +12,7 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { icon: 'grid_view', label: 'Dashboard', href: '/dashboard' },
+  { icon: 'group', label: 'Students', href: '/students' },
   { icon: 'calendar_month', label: 'Schedule', href: '/schedule' },
   { icon: 'forum', label: 'Messages', href: '/messages' },
   { icon: 'person', label: 'Profile', href: '/profile' }
