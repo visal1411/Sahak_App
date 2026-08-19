@@ -2,8 +2,12 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export function TopAppBar() {
+  const pathname = usePathname();
+  const isStudentArea = pathname.includes('student') || pathname.includes('mentorship') || pathname.includes('universities');
+
   return (
     <header className="sticky top-0 z-40 w-full h-20 bg-surface-container-lowest/80 backdrop-blur-md border-b border-outline-variant/30 px-6 lg:px-12 flex items-center justify-between">
       {/* Brand logo */}
@@ -23,11 +27,13 @@ export function TopAppBar() {
           <span className="absolute top-2 right-2.5 w-2 h-2 bg-error rounded-full animate-soft-pulse"></span>
         </button>
         
-        <Link href="/profile" className="flex items-center gap-3 p-1.5 pr-4 rounded-full bg-surface-container-high border border-outline-variant/20 hover:bg-surface-variant transition-colors cursor-pointer">
+        <Link href={isStudentArea ? "/student-profile" : "/profile"} className="flex items-center gap-3 p-1.5 pr-4 rounded-full bg-surface-container-high border border-outline-variant/20 hover:bg-surface-variant transition-colors cursor-pointer group">
           <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center overflow-hidden">
             <span className="material-symbols-outlined text-primary text-xl">person</span>
           </div>
-          <span className="font-body-sm text-body-sm text-on-surface font-medium hidden md:block">Mentors Area</span>
+          <span className="font-body-sm text-body-sm text-on-surface font-medium hidden md:block">
+            {isStudentArea ? "Student Area" : "Mentors Area"}
+          </span>
         </Link>
       </div>
     </header>

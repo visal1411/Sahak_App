@@ -2,11 +2,13 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { AuthFormShell } from '@/components/shared/AuthFormShell';
 import { TextField } from '@/components/shared/TextField';
 import { BadgeArrowButton } from '@/components/shared/BadgeArrowButton';
 
 export default function MentorRegisterPage() {
+  const router = useRouter();
   const [step, setStep] = useState(1);
 
   return (
@@ -20,7 +22,7 @@ export default function MentorRegisterPage() {
     >
       <form className="space-y-8" onSubmit={(e) => {
         e.preventDefault();
-        if (step === 2) setStep(3);
+        if (step === 2) router.push('/dashboard');
       }}>
         
         {step === 1 && (

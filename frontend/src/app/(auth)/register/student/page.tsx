@@ -2,11 +2,13 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { AuthFormShell } from '@/components/shared/AuthFormShell';
 import { TextField } from '@/components/shared/TextField';
 import { BadgeArrowButton } from '@/components/shared/BadgeArrowButton';
 
 export default function StudentRegisterPage() {
+  const router = useRouter();
   const [step, setStep] = useState(1);
 
   return (
@@ -18,7 +20,10 @@ export default function StudentRegisterPage() {
       showBackButton={true}
       backButtonHref="/role-selection"
     >
-      <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+      <form className="space-y-6" onSubmit={(e) => {
+        e.preventDefault();
+        if (step === 2) router.push('/student-setup');
+      }}>
         
         {step === 1 && (
           <div className="space-y-6 animate-fade-in">
